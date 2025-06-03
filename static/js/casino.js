@@ -18,19 +18,7 @@
   document.querySelector("#spinner").addEventListener("click", spin);
   document.querySelector("#reseter").addEventListener("click", init);
 
-  let deposit = 100;
-  document.getElementById('deposit').textContent = deposit;
-
   async function spin() {
-    const bet = parseInt(document.getElementById('bet').value);
-    if (isNaN(bet) || bet <= 0 || bet > deposit) {
-      alert("Invalid bet!");
-      return;
-    }
-
-    deposit -= bet;
-    document.getElementById('deposit').textContent = deposit;
-
     init(false, 1, 2);
     for (const door of doors) {
       const boxes = door.querySelector(".boxes");
@@ -38,33 +26,6 @@
       boxes.style.transform = "translateY(0)";
       await new Promise((resolve) => setTimeout(resolve, duration * 100));
     }
-
-    // Получаем финальные символы
-    const finalSymbols = Array.from(doors).map(door => {
-      const boxes = door.querySelector(".boxes");
-      const finalPosition = parseInt(boxes.style.transform.match(/-(\d+)px/)[1]);
-      const index = (finalPosition / 100) % items.length;
-      return items[Math.floor(index)];
-    });
-
-    // Отправляем результаты на сервер
-    fetch('/check_win', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ symbols: finalSymbols })
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.result === 'win') {
-        deposit += bet * 2;
-        document.getElementById('deposit').textContent = deposit;
-        alert("You win!");
-      } else {
-        alert("You lose!");
-      }
-    });
   }
 
   function init(firstInit = true, groups = 1, duration = 1) {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Menu</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/styles.css') }}">
     <style>
         body {
             margin: 0;
@@ -72,7 +72,7 @@
         <p>Здесь вы можете найти информацию о нас</p>
         <div class="creator-info">
             <h2>Основатель группы: Андрей Фролов</h2>
-            <img src="{{ url_for('static', filename='uploads/creator_photo.jpg') }}" alt="Creator Photo" class="creator-photo">
+            <img src="{{ url_for('static', filename='images/uploads/creator_photo.jpg') }}" alt="Creator Photo" class="creator-photo">
             <p>Бизнесмен, криптоинвестор, и просто крутой чел</p>
         </div>
         <a href="https://t.me/your_group">Наша группа в тг</a>
@@ -82,7 +82,7 @@
         <a href="https://t.me/your_group">Мы в тг</a>
         <div class="logos">
             <h2>Нашы инвесторы</h2>
-            <img src="{{ url_for('static', filename='uploads/logo1.png') }}" alt="Logo 1">
+            <img src="{{ url_for('static', filename='images/uploads/logo1.png') }}" alt="Logo 1">
         </div>
     </div>
 </body>

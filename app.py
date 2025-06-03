@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Настройка загрузки файлов
-app.config['UPLOADED_PHOTOS_DEST'] = 'static/uploads'
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/images/uploads'
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 patch_request_class(app)  # Для обработки загрузки файлов
@@ -114,7 +114,7 @@ def games():
 @login_required
 def casino():
     print('casino')
-    return render_template('casino.html')
+    return render_template('casino.html', user=current_user)
 
 @app.route('/spin', methods=['POST'])
 @login_required
@@ -133,18 +133,13 @@ def spin():
 @app.route('/check_win', methods=['POST'])
 @login_required
 def check_win():
-    print(2)
     data = request.get_json()
-    symbols = data['symbols']
-    bet = data['bet']
+    new_balance = data['balance']
 
-    if symbols[0] == symbols[1] == symbols[2]:
-        current_user.coins += bet * 2
-        db.session.commit()
-        return jsonify({'result': 'win', 'coins': current_user.coins})
-    else:
-        db.session.commit()
-        return jsonify({'result': 'lose', 'coins': current_user.coins})
+    current_user.coins = new_balance
+    db.session.commit()
+
+    return jsonify({'status': 'success'})
 
 @app.route('/dice')
 @login_required

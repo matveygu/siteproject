@@ -137,7 +137,7 @@
     <div class="profile-container">
         <h2>Профиль</h2>
         <div class="profile-info">
-            <img src="{{ url_for('static', filename='uploads/' + user.photo) }}" alt="Profile Photo">
+            <img src="{{ url_for('static', filename='images/uploads/' + user.photo) }}" alt="Profile Photo">
             <p>Имя: {{ user.username }}</p>
             <p>Описание: {{ user.description }}</p>
         </div>
@@ -171,16 +171,16 @@
         <h3>Ачивки</h3>
         <div class="achievements">
             <div class="achievement">
-                <img src="{{ url_for('static', filename='achivments/slots/' + achievements.casino_spins) }}" alt="Casino">
+                <img src="{{ url_for('static', filename='images/achivments/slots/' + achievements.casino_spins) }}" alt="Casino">
             </div>
             <div class="achievement">
-                <img src="{{ url_for('static', filename='achivments/dice/' + achievements.dice_rolls) }}" alt="Dice">
+                <img src="{{ url_for('static', filename='images/achivments/dice/' + achievements.dice_rolls) }}" alt="Dice">
             </div>
             <div class="achievement">
-                <img src="{{ url_for('static', filename='achivments/clicker/' + achievements.tasks_solved) }}" alt="Tasks">
+                <img src="{{ url_for('static', filename='images/achivments/clicker/' + achievements.tasks_solved) }}" alt="Tasks">
             </div>
             <div class="achievement">
-                <img src="{{ url_for('static', filename='achivments/clicker/' + achievements.clicks) }}" alt="Clicks">
+                <img src="{{ url_for('static', filename='images/achivments/clicker/' + achievements.clicks) }}" alt="Clicks">
             </div>
         </div>
     </div>

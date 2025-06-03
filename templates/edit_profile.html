@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
+    <title>Редактировать профиль</title>
     <style>
         body {
             margin: 0;
@@ -94,7 +94,7 @@
         <h1>Изменение профиля</h1>
         <form method="POST" enctype="multipart/form-data">
             <div class="profile-picture">
-                <img src="{{ url_for('static', filename='uploads/' + current_user.photo) }}" alt="Profile Picture" style="width: 100%; height: 100%; border-radius: 50%;">
+                <img src="{{ url_for('static', filename='images/uploads/' + current_user.photo) }}" alt="Profile Picture" style="width: 100%; height: 100%; border-radius: 50%;">
             </div>
             <input type="file" name="photo">
             <input type="text" name="username" value="{{ current_user.username }}" placeholder="Username">
